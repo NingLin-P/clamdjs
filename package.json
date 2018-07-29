@@ -14,7 +14,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NingLin-P/clamdjs.git"
+    "url": "https://github.com/NingLin-P/clamdjs.git"
   },
   "devDependencies": {
     "mocha": "^5.2.0",
