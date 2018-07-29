@@ -1,0 +1,25 @@
+{
+  "name": "clamdjs",
+  "version": "1.0.0",
+  "description": "A ClamAV client on node.js",
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "test": "mocha"
+  },
+  "main": "index.js",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "standard": "^11.0.1"
+  },
+  "keywords": [
+    "clamav",
+    "clamd",
+    "virus",
+    "antivirus",
+    "clamscan",
+    "security"
+  ],
+  "author": "Lin Ning <linningde25@gmail.com>",
+  "license": "MIT"
+}
