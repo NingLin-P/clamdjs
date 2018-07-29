@@ -16,6 +16,12 @@ http://linux.die.net/man/8/clamd
 - Get the version detail of the running ClamAV program
 
 ----
+## Installation
+
+```sh
+$ npm install clamdjs
+```
+----
 ### API
 ```js
 const clamd = require('clamdjs')
