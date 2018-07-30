@@ -4,7 +4,7 @@
     "url": "https://github.com/NingLin-P/clamdjs/issues"
   },
   "name": "clamdjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A ClamAV client on node.js",
   "scripts": {
     "lint": "standard",
