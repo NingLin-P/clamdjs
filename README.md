@@ -77,8 +77,8 @@ scanner.scanFile(path, 3000, 1024 * 1024)
 ## scanner.scanDirectory(rootPath, [options])
 ```js
 let optins = {
-    timeout: 3000,
-    chunkSize: 1024 * 1024,
+    timeout: 5000,
+    chunkSize: 64 * 1024,
     scanningFile: 10,
     detail: true,
     cont: true
@@ -103,9 +103,9 @@ scanner.scanDirectory(rootPath, options)
 - `optinns (Object)`
   - `timeout (Number)` - use to set the socket's timeout option, default `5000`
   - `chunkSize (Number)` - size of the chunk, which will send to ClamAV server, default `64 * 1024`
-  - `scanningFile (Number)` - the number of file will scan concurrently, should not be greater than the file table limit in node.js
-  - `detail (Boolean)` - if `true` the output object will contain the scan summary and all scaned files's scan result no matter infected or not, if `false` the output object will contain the scan summary and scan result of infected files and file that encountered error when scanning
-  - `cont (Boolean)` - when scanning a path and an Error throw, if `true`, will move on to scan next path, if `false`, will stop scanning and return a rejected promise
+  - `scanningFile (Number)` - the number of file will scan concurrently, should not be greater than the file table limit in node.js, default `10`
+  - `detail (Boolean)` - if `true` the output object will contain the scan summary and all scaned files's scan result no matter infected or not, if `false` the output object will contain the scan summary and scan result of infected files and file that encountered error when scanning, default `true`
+  - `cont (Boolean)` - when scanning a path and an Error throw, if `true`, will move on to scan next path, if `false`, will stop scanning and return a rejected promise, default `true`
 
 ## clamd.ping()
 **Returns true if clamd daemon alive**
