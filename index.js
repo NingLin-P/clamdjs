@@ -65,15 +65,21 @@ function createScanner (host, port) {
       socket.setTimeout(timeout)
       socket
         .on('data', function (chunk) {
+          clearTimeout(connectAttemptTimer)
           if (!readStream.isPaused()) readStream.pause()
           replys.push(chunk)
         })
         .on('end', function () {
+          clearTimeout(connectAttemptTimer)
           let reply = Buffer.concat(replys)
           if (!readFinished) reject(new Error('Scan aborted. Reply from server: ' + reply))
           else resolve(reply.toString())
         })
         .on('error', reject)
+
+      const connectAttemptTimer = setTimeout(function () {
+        socket.destroy(new Error('Timeout connecting to server'));
+      }, timeout)
     })
   }
 
