@@ -40,7 +40,7 @@ function createScanner (host, port) {
    * @return {Promise}
    */
 
-  function scanStream (timeout, chunkSize) {
+  function scanStream (filePath, timeout, chunkSize) {
     if (typeof timeout !== 'number' || timeout < 0) timeout = 5000
 
     return new Promise(function (resolve, reject) {
@@ -127,7 +127,7 @@ function createScanner (host, port) {
     if (typeof timeout !== 'number' || timeout < 0) timeout = 5000
     if (typeof chunkSize !== 'number') chunkSize = 64 * 1024
 
-    return scanStream(timeout, timeout, chunkSize)
+    return scanStream(filePath, timeout, chunkSize)
   }
 
   /**
