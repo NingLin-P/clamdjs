@@ -35,17 +35,21 @@ function createScanner (host, port) {
 
   /**
    * scan a read stream
-   * @param {object} readStream
    * @param {number} [timeout = 5000] the socket's timeout option
+   * @param {number} [chunkSize = 64kb] size of the chunk, which send to Clamav server
    * @return {Promise}
    */
 
-  function scanStream (readStream, timeout) {
+  function scanStream (timeout, chunkSize) {
     if (typeof timeout !== 'number' || timeout < 0) timeout = 5000
 
     return new Promise(function (resolve, reject) {
       let readFinished = false
 
+      let readStream = fs.createReadStream(filePath, {
+        highWaterMark: chunkSize
+      })
+      .on('error', reject)
       const socket = net.createConnection({
         host,
         port
@@ -58,7 +62,6 @@ function createScanner (host, port) {
             readFinished = true
             readStream.destroy()
           })
-          .on('error', reject)
       })
 
       let replys = []
@@ -124,10 +127,7 @@ function createScanner (host, port) {
     if (typeof timeout !== 'number' || timeout < 0) timeout = 5000
     if (typeof chunkSize !== 'number') chunkSize = 64 * 1024
 
-    let s = fs.createReadStream(filePath, {
-      highWaterMark: chunkSize
-    })
-    return scanStream(s, timeout)
+    return scanStream(timeout, timeout, chunkSize)
   }
 
   /**
