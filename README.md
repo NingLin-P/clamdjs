@@ -76,7 +76,7 @@ scanner.scanFile(path, 3000, 1024 * 1024)
 
 ## scanner.scanDirectory(rootPath, [options])
 ```js
-let optins = {
+let options = {
     timeout: 5000,
     chunkSize: 64 * 1024,
     scanningFile: 10,
@@ -100,7 +100,7 @@ scanner.scanDirectory(rootPath, options)
 **Returns a promise, which will resovle with a object which contained the scan summary**
 
 - `rootPath (String)` - directory path, will be pass to path.normalize() first
-- `optinns (Object)`
+- `options (Object)`
   - `timeout (Number)` - use to set the socket's timeout option, default `5000`
   - `chunkSize (Number)` - size of the chunk, which will send to ClamAV server, default `64 * 1024`
   - `scanningFile (Number)` - the number of file will scan concurrently, should not be greater than the file table limit in node.js, default `10`
@@ -114,4 +114,4 @@ scanner.scanDirectory(rootPath, options)
 **Returns clamav version information**
 
 ## clamd.isCleanReply(reply)
-**Retuens true if the reply of a scan means OK, false if means infected**
+**Returns true if the reply of a scan means OK, false if means infected**
