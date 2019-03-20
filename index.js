@@ -124,6 +124,17 @@ function createScanner (host, port) {
     if (typeof timeout !== 'number' || timeout < 0) timeout = 5000
     if (typeof chunkSize !== 'number') chunkSize = 64 * 1024
 
+    try {
+      let stats = fs.statSync(filePath)
+      if (stats.isDirectory()) {
+        return Promise.reject(new Error(filePath + ' is a directory, please use scanDirectory instead!'))
+      } else if (!stats.isFile() || stats.isSymbolicLink()){
+        return Promise.reject(new Error(filePath + ' is Not a regular file'))
+      }
+    } catch (error) {
+      return Promise.reject(error)
+    }
+    
     let s = fs.createReadStream(filePath, {
       highWaterMark: chunkSize
     })

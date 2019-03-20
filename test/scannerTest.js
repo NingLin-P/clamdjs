@@ -36,5 +36,12 @@ describe('Scanner', function () {
         else done(new Error('should not respond FOUND with zore byte'))
       }).catch(done)
     })
+    
+    it('should throw error with incorrect path', function (done) {
+      scanner.scanFile('./non_exit.txt').then((res) => {
+        done(new Error('should throw error with incorrect path'))
+        /* eslint-disable handle-callback-err */
+      }).catch(err => done())
+    })
   })
 })
