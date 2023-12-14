@@ -114,4 +114,4 @@ scanner.scanDirectory(rootPath, options)
 **Returns clamav version information**
 
 ## clamd.isCleanReply(reply)
-**Retuens true if the reply of a scan means OK, false if means infected**
+**Returns true if the reply of a scan means OK, false if means infected**
